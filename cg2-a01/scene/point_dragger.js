@@ -13,7 +13,7 @@
 
 
 /* requireJS module definition */
-define(["util", "scene"],
+define(["../../cg2-a00-test/util", "scene"],
     (function (util, Scene) {
 
         "use strict";

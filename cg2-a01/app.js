@@ -42,7 +42,7 @@ requirejs.config({
  */
 
 /* requireJS module definition */
-define(["jquery", "util",
+define(["jquery", "../cg2-a00-test/util",
         "Scene", "SceneController", "HtmlController"],
 
     (function($, util,

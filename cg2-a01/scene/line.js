@@ -14,7 +14,7 @@
 
 
 /* requireJS module definition */
-define(["util", "vec2", "scene", "PointDragger"],
+define(["../../cg2-a00-test/util", "vec2", "scene", "PointDragger"],
     (function (util, vec2, Scene, PointDragger) {
 
         "use strict";
