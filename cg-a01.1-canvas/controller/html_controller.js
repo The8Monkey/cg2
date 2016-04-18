@@ -12,8 +12,8 @@
 
 
 /* requireJS module definition */
-define(["jquery", "Line"],
-    (function($, Line) {
+define(["jquery", "Line", "Circle"],
+    (function($, Line, Circle) {
         "use strict";
 
         /*
@@ -70,6 +70,25 @@ define(["jquery", "Line"],
                 // deselect all objects, then select the newly created object
                 sceneController.deselect();
                 sceneController.select(line); // this will also redraw
+
+            }));
+
+            $("#btnNewCircle").click( (function() {
+
+                // create the actual line and add it to the scene
+                var style = {
+                    width: Math.floor(Math.random()*3)+1,
+                    color: randomColor()
+                };
+
+                var circle = new Circle( [randomX(),randomY()],
+                    [randomX(),randomY()],
+                    style );
+                scene.addObjects([circle]);
+
+                // deselect all objects, then select the newly created object
+                sceneController.deselect();
+                sceneController.select(circle); // this will also redraw
 
             }));
 

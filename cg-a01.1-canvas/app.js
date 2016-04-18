@@ -24,6 +24,7 @@ requirejs.config({
 
         "Scene" : "./scene/scene",
         "Line" : "./scene/line",
+        "Circle" : "./scene/circle",
         "PointDragger" : "./scene/point_dragger",
 
         "vec2" : "./math/vec2",
@@ -42,7 +43,7 @@ requirejs.config({
  */
 
 /* requireJS module definition */
-define(["jquery", "../cg2-a00-test/util",
+define(["jquery", "util",
         "Scene", "SceneController", "HtmlController"],
 
     (function($, util,
