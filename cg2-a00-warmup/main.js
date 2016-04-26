@@ -8,7 +8,16 @@
 "use strict";
 
 // this shall be the function that generates a new path object
-var makePath;
+var makePath = function(sep){
+    var sep = sep ? sep : "";
+    // if(sep) sep = sep;
+    // else sep = "";
+    var paths = "";
+    return function(string){
+        if(string) paths += string + sep;
+        else return paths.substr(0, paths.length - sep.length);
+    };
+};
 
 // the main() function is called when the HTML document is loaded
 var main = function() {
