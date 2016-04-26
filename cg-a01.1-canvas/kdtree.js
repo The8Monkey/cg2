@@ -42,9 +42,9 @@ define(["kdutil", "vec2", "Scene", "KdNode", "BoundingBox"],
                     node.bbox(0,0,canvas.width,canvas.height, node.point, dim);
                 }else{
                     if(isLeft){
-                        node.bbox=new BoundingBox(parent.bbox.xmin, parent.bbox.ymin, parent.point.x, parent.bbox.ymax,node.point,1);
+                        node.bbox=new BoundingBox(parent.bbox.xmin, parent.bbox.ymin, parent.point.center[0], parent.bbox.ymax,node.point,1);
                     }else {
-                        node.bbox=new BoundingBox(parent.point.x, parent.bbox.ymin,parent.bbox.xmax,parent.bbox.ymax,node.point,1);
+                        node.bbox=new BoundingBox(parent.point.center[0], parent.bbox.ymin,parent.bbox.xmax,parent.bbox.ymax,node.point,1);
                     }
                 }
 
