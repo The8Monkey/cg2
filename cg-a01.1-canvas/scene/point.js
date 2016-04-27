@@ -6,26 +6,26 @@
 define(["util", "vec2", "Scene", "PointDragger"],
     (function (util, vec2, Scene, PointDragger) {
 
-        var Dot = function Dot(origin, radius, style){
-            //console.log("creating a Circle at [" + this.origin[0] + "," +
-            //    this.origin[1] + "] with radius of " + this.radius);
+        var Point = function Point(center, radius, style){
+            //console.log("creating a Circle at [" + this.center[0] + "," +
+            //    this.center[1] + "] with radius of " + this.radius);
 
             this.style = style || { color: "#00AA00"};
-            this.origin = origin || [10,10];
+            this.center = center || [10,10];
             if(!radius){
                 this.radius = [10,10];
             } else {
-                this.radius = [origin[0] + radius, origin[1]];
+                this.radius = [center[0] + radius, center[1]];
             }
         };
 
 
-        Dot.prototype.draw = function (context) {
+        Point.prototype.draw = function (context) {
 
             context.beginPath();
             context.arc(
-                this.origin[0], this.origin[1], // position
-                Math.abs(mag(this.origin, this.radius)),    // radius
+                this.center[0], this.center[1], // position
+                Math.abs(mag(this.center, this.radius)),    // radius
                 0.0, Math.PI * 2,           // start and end angle
                 true
             );                    // clockwise
@@ -37,32 +37,32 @@ define(["util", "vec2", "Scene", "PointDragger"],
             context.stroke();
         };
 
-        Dot.prototype.isHit = function (context, mousePos){
-            var pos = this.origin;
+        Point.prototype.isHit = function (context, mousePos){
+            var pos = this.center;
             var dx = mousePos[0] - pos[0];
             var dy = mousePos[1] - pos[1];
-            var r = mag(this.radius, this.origin);
+            var r = mag(this.radius, this.center);
             return(dx * dx + dy * dy) <= (r*r);
         };
 
-        Dot.prototype.createDraggers = function () {
+        Point.prototype.createDraggers = function () {
 
             var draggerStyle = {radius: 4, color: this.style.color, width: 0, fill:true };
             var draggers = [];
 
             var _circle = this;
-            var getOrigin = function (){
-                return _circle.origin;
+            var getcenter = function (){
+                return _circle.center;
             };
 
 
-            var setOrigin = function(dragEvent){
-                _circle.origin = dragEvent.position;
+            var setcenter = function(dragEvent){
+                _circle.center = dragEvent.position;
                 _circle.radius[0] += dragEvent.delta[0];
                 _circle.radius[1] += dragEvent.delta[1];
             };
 
-            draggers.push(new PointDragger(getOrigin, setOrigin, draggerStyle));
+            draggers.push(new PointDragger(getcenter, setcenter, draggerStyle));
 
             return draggers;
 
@@ -77,6 +77,6 @@ define(["util", "vec2", "Scene", "PointDragger"],
                 ));
         }
 
-        return Dot;
+        return Point;
 
     }));

@@ -36,10 +36,11 @@ define(["kdutil", "vec2", "Scene", "KdNode", "BoundingBox"],
                 var node = new KdNode(dim);
                 var median = KdUtil.sortAndMedian(pointList,dim);
                 node.point = pointList[median];
+                pointList.splice(median,1);
 
                 if(!parent){
-                    var canvas = document.getElementById("drawing_area");
-                    node.bbox(0,0,canvas.width,canvas.height, node.point, dim);
+                    var canvas = document.getElementById('drawing_area');
+                    node.bbox= new BoundingBox(0,0,canvas.width,canvas.height, node.point, dim);
                 }else{
                     if(dim){
                         if(isLeft){
@@ -49,25 +50,29 @@ define(["kdutil", "vec2", "Scene", "KdNode", "BoundingBox"],
                         }
                     }else {
                         if(isLeft){
-                            node.bbox=new BoundingBox(parent.bbox.xmin, parent.bbox.ymin, parent.point.xmax, parent.bbox.center[1],node.point,0);
+                            node.bbox=new BoundingBox(parent.bbox.xmin, parent.bbox.ymin, parent.bbox.xmax, parent.point.center[1],node.point,0);
                         }else {
-                            node.bbox=new BoundingBox(parent.point.xmin, parent.bbox.center[1],parent.bbox.xmax,parent.bbox.ymax,node.point,0);
+                            node.bbox=new BoundingBox(parent.bbox.xmin, parent.point.center[1],parent.bbox.xmax,parent.bbox.ymax,node.point,0);
                         }
                     }
                 }
-
-                pointList.splice(median,1);
 
                 if(pointList.length > 0){
                     var leftList =[];
                     var rightList = [];
                     for(var i=0; i<pointList.length;i++){
-                        if(pointList[i].point < node.point){
+                        if(pointList[i].center[dim] < node.point.center[dim]){
                             leftList.push(pointList[i]);
                         }else{
                             rightList.push(pointList[i]);
                         }
                     }
+                    if(leftList.length > 0){
+                        node.leftChild = this.build(leftList, 1 - dim, node, true);
+                    };
+                    if ( rightList.length > 0){
+                        node.rightChild = this.build(rightList, 1 - dim, node, false);
+                    };
                 }
 
 
