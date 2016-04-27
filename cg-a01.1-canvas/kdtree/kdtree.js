@@ -69,10 +69,10 @@ define(["kdutil", "vec2", "Scene", "KdNode", "BoundingBox"],
                     }
                     if(leftList.length > 0){
                         node.leftChild = this.build(leftList, 1 - dim, node, true);
-                    };
+                    }
                     if ( rightList.length > 0){
                         node.rightChild = this.build(rightList, 1 - dim, node, false);
-                    };
+                    }
                 }
 
 
