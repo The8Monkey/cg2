@@ -70,7 +70,7 @@ define([], (function() {
 
     /**
      * compute euclidean distance between two points
-     * 
+     *
      * @param p0
      * @param p1
      * @returns {number}

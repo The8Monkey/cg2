@@ -21,15 +21,15 @@ requirejs.config({
             '../lib/jquery-1.7.2.min'],
 
         "util" : "./utils/util",
+        "Kdtree" : "./kdtree/kdtree",
+        "kdutil":"./kdtree/kdutil",
+        "KdNode":"./kdtree/kdnode",
+        "BoundingBox":"./kdtree/boundingbox",
 
         "Scene" : "./scene/scene",
         "Line" : "./scene/line",
         "Circle" : "./scene/circle",
         "Point" : "./scene/point",
-        "Kdtree" : "./kdtree",
-        "kdutil":"./kdutil",
-        "KdNode":"./kdnode",
-        "BoundingBox":"./boundingbox",
         "PointDragger" : "./scene/point_dragger",
 
         "vec2" : "./math/vec2",
