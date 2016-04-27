@@ -12,8 +12,8 @@
 
 
 /* requireJS module definition */
-define(["jquery", "Line", "Circle", "Point", "KdTree", "../cg2-a00-test/util", "kdutil"],
-    (function($, Line, Circle, Point, KdTree, Util, KdUtil) {
+define(["jquery", "Line", "Circle", "Point", "KdTree", "kdutil"],
+    (function($, Line, Circle, Point, KdTree, KdUtil) {
         "use strict";
 
         /*
