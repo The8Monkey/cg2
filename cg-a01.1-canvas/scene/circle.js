@@ -1,8 +1,3 @@
-/**
- * Created by Sebastian Nieling on 4/18/2016.
- */
-
-
 define(["util", "vec2", "Scene", "PointDragger"],
     (function (util, vec2, Scene, PointDragger) {
 
